@@ -1,6 +1,7 @@
 const day = '02';
+const year = '2022';
 const fs = require('fs');
-fs.readFile('/Users/danny/github/AoC-2022/day' + day + '/input.txt', 'utf8', (err, data) => {
+fs.readFile('/Users/danny/github/AoC-' + year + '/day' + day + '/input.txt', 'utf8', (err, data) => {
   if (err) {
       console.error(err);
       return;

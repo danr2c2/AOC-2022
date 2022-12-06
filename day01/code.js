@@ -1,18 +1,14 @@
 const day = '01';
-const year = '2022';
+const filename = 'day' + day + '/input.txt';
 const fs = require('fs');
-fs.readFile('/Users/danny/github/AoC-' + year + '/day' + day + '/input.txt', 'utf8', (err, data) => {
-  if (err) {
-      console.error(err);
-      return;
-    }
-  part1(data);
-  part2(data);
-});
+var data = fs.readFileSync(filename, 'utf-8');
+const input = data.replace(/\r/g, '')
+    .trim()
+    .split('\n\n');
 
-function part1(data) {
+function part1() {
   //do something
-  var elves = data.replace(/\r/g, "").trim().split("\n\n");
+  var elves = input;
   
   const calories = elves.map((elf) => {
     const calories = elf.split('\n').map(Number);
@@ -24,9 +20,9 @@ function part1(data) {
 
 }
 
-function part2(data) {
+function part2() {
   //do something
-  var elves = data.replace(/\r/g, "").trim().split("\n\n");
+  var elves = input;
 
   const calories = elves.map((elf) => {
     const calories = elf.split('\n').map(Number);
@@ -38,3 +34,6 @@ function part2(data) {
   console.log(calories.slice(0,3).reduce((previous, current) => previous + current, 0));
 
 }
+
+part1();
+part2();

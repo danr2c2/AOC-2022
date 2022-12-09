@@ -8,7 +8,7 @@ const input = data.replace(/\r/g, '')
 
 var step = (input[0].length + 1)/4;
 var map = {};
-for (var i=1; i<step+1; i++) {
+for (var i=1; i<=step; i++) {
         map[i] = (i*4) - 3;
 }
 console.log(map);

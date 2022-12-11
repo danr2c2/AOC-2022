@@ -20,16 +20,11 @@ function part1() {
     //do something
     var signal = [];
     var cycle = [1];
-    var lastCycle = 0;
     var X = 1;
 
     function signalCheck(X) {
-        if (cycle.length == 20) {
+        if (cycle.length%40 == 20) {
             signal.push(X*(cycle.length));
-            lastCycle = cycle.length;
-        } else if (cycle.length == lastCycle + 40) {
-            signal.push(X*(cycle.length));
-            lastCycle = cycle.length;
         }
     }
 
@@ -41,7 +36,8 @@ function part1() {
             X += input[i].number;
             signalCheck(X);
         }  
-        console.log(cycle.length, X, signal);
+        var count = cycle.length;
+        console.log({ count, X, signal });
     }
     console.log(signal.reduce((a,b) => a+b, 0));
 }
@@ -53,7 +49,7 @@ function part2() {
     var X = 1;
 
     function pixelDraw(X) {
-        if (sprites.length%40 == (X-1) || sprites.length%40 == (X) || sprites.length%40 == (X+1)) {
+        if ([(X-1),X,(X+1)].indexOf(sprites.length%40) > -1) {
             sprites += '#';
         } else {
             sprites += '.';
